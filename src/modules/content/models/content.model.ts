@@ -3,8 +3,12 @@ export interface GenerateContentResponse {
   message: string;
   data: {
     topic: string;
-    text: string | { error: boolean; message: string };
-    imageUrls: string[] | { error: boolean; message: string };
-    videoUrls: string[] | { error: boolean; message: string };
+    text: string | ApiError;
+    imageUrls: Record<string, string[]> | ApiError;
+    videoUrls: Record<string, string[]> | ApiError;
   };
+}
+export  interface ApiError {
+  error: true;
+  message: string;
 }
